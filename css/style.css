@@ -1,0 +1,870 @@
+﻿/* ========================================
+	煮る茶の秘密基地（個人サイト）
+	作者：煮る茶
+	最終更新：2026/06/25
+	ファイル：style.css
+   ======================================== */
+
+/* ========== 全体・フォントの設定 ========== */
+
+/* 文字コードをUTF-8に指定（日本語崩れ防止） */
+@charset "utf-8";
+
+/* サイト全体の設定 */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* HTMLタグの設定 */
+html {
+	/* 文字サイズ */
+	font-size: 16px;
+
+	/* スマホ等での自動文字拡大を抑制  */
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+
+	/* スクロールバーを固定  */
+	overflow-y: scroll;
+}
+
+/* ボディタグの設定 */
+body {
+	/* フォント（上から順番に適用） */
+	font-family:
+		"Noto Sans JP",
+		"Hiragino Kaku Gothic ProN",
+		"Yu Gothic",
+		"Meiryo",
+		sans-serif;
+
+	/* 文字サイズ */
+	font-size: clamp(10px, 2vw, 14px);
+	/* 行間 */
+	line-height: 1.5;
+	/* 文字色*/
+	color: #001f0c;
+
+	/* 背景色 */
+	background-color: #b2bea0;
+}
+
+/* 段落の設定 */
+p {
+	/* 外側の余白（上 右 下 左） */
+	margin: 0 0 20px 0;
+}
+
+/* リンクの設定 */
+a {
+	/* 文字色 */
+	color: #001f0c;
+}
+
+/* マウスを乗せた時の設定 */
+a:hover {
+	/* 文字色 */
+	color: #1d3f29;
+}
+
+/* ========== レイアウト ========== */
+
+/* コンテンツタグの設定 */
+#contents {
+	/* サイズ */
+	max-width: 960px;
+
+	/* 内側の余白（全体をリセット） */
+	padding: 0;
+
+	/* 外側の余白（上下 左右） */
+	/* サイトを中央に配置するため */
+	margin: 0 auto;
+
+	/* 縁取り */
+	border: 2px solid #001f0c;
+}
+
+/* ヘッダータグの設定 */
+header {
+	/* 内側の余白（全体） */
+	padding: 0;
+
+	/* 外側の余白（全体） */
+	margin: 10px;
+}
+
+/* ホームエリアの設定 */
+#home {
+	/* 内側の余白（全体） */
+	padding: 0;
+
+	/* 外側の余白（上 右 下 左） */
+	/* ほかのページと上の間隔をそろえるため */
+	margin: 30px 10px 0 10px;
+}
+
+/* ホームの画像の設定 */
+#home img {
+	/* サイズ */
+	width: 100%;
+	/* アニメーションの変化速度
+   transform : 移動
+   filter    : 明るさ */
+	transition:
+		transform 0.5s ease,
+		filter 0.5s ease;
+}
+
+/* ホーム画像にマウスを乗せた時の設定 */
+#home img:hover {
+	/* 画像を明るくする */
+	filter: brightness(1.1);
+	/* 画像を上に移動する */
+	transform: translateY(-5px);
+}
+
+/* ホーム画像をマウスでクリックした時の設定 */
+#home img:active {
+	/* 画像を元の位置に戻す */
+	transform: translateY(0px);
+}
+
+/* メインとサイドの幅をflexで管理
+   ※幅はflexで統一し、widthは使用しない
+   レイアウトの管理を統一し、サイズのズレを防止するため
+   比率は main 3 : sub 1 */
+
+/* メインとサイドを横並びにする */
+#container {
+	/* flexレイアウトを有効にする */
+	display: flex;
+
+	/* メインとサイドを上揃え */
+	align-items: flex-start;
+
+	/* 文字サイズ */
+	font-size: clamp(10px, 2vw, 14px);
+
+	/* 内側の余白（全体） */
+	padding: 10px;
+
+	/* メインとサイドの間隔 */
+	gap: 10px;
+}
+
+/* メインエリアの設定 */
+#main {
+	/* 使用する画面の割合 */
+	flex: 5;
+	min-width: 0;
+	/* 内側の余白（全体をリセット） */
+	padding: 0;
+	/* 外側の余白（全体をリセット） */
+	margin: 0;
+}
+
+/* サイドエリアの設定 */
+#sub {
+	/* 使用する画面の割合 */
+	flex: 2;
+	min-width: 0;
+	/* 内側の余白（全体をリセット） */
+	padding: 0;
+	/* 外側の余白（全体をリセット） */
+	margin: 0;
+}
+
+/* サイドの画像の設定 */
+#sub img {
+	/* 幅の変更 */
+	width: 100%;
+	/* 高さ（自動） */
+	height: auto;
+}
+
+/* フッタータグの設定 */
+footer {
+	/* 内側の余白（全体のリセット） */
+	padding: 0;
+	/* 外側の余白（全体） */
+	margin: 10px;
+
+	/* 文字サイズ */
+	font-size: clamp(10px, 1.5vw, 14px);
+}
+
+/* ========== フッター要素 ========== */
+
+/* ページトップエリア */
+.f-top {
+	/* flexレイアウトを有効にする */
+	display: flex;
+
+	/* 右寄せ */
+	justify-content: flex-end;
+
+	/* 外側の余白（下） */
+	margin-bottom: 5px;
+}
+
+/* ページトップリンク */
+#pagetop {
+	/* リンク線を削除 */
+	text-decoration: none;
+	/* 親要素の文字色を使用 */
+	color: inherit;
+}
+
+/* フッターの区切り線 */
+.f-line {
+
+	padding-top: 10px;
+
+	/* 上側の線 */
+	border-top: 2px solid #001f0c;
+}
+
+/* コピーライト */
+#copyright {
+	/* 文字を中央揃え */
+	text-align: center;
+
+	/* 外側の余白（上下 左右）*/
+	margin: 0;
+}
+
+/* ========== ナビゲーション ========== */
+
+/* ナビゲーション全体 */
+nav ul {
+	/* flexレイアウト有効 */
+	display: flex;
+	/* 横方向の中央揃え（flex） */
+	justify-content: center;
+
+	/* 内側の余白（全体） */
+	padding: 0;
+	/* 外側の余白（全体） */
+	margin: 0;
+
+	/* ・削除 */
+	list-style: none;
+}
+
+/* 各メニュー枠 */
+nav ul li {
+	/* 使う空間 */
+	flex: 1;
+}
+
+/* リンクボタン */
+nav ul li a {
+	display: block;
+
+	box-sizing: border-box;
+
+	/* 文字サイズ */
+	font-size: clamp(10px, 1.5vw, 16px);
+	/* 太字 */
+	font-weight: bold;
+	/* 文字色 */
+	color: #001f0c;
+	/* 文字を中央揃え */
+	text-align: center;
+
+	/* 内側の余白（上下 右左） */
+	padding: clamp(10px, 2vw, 15px);
+
+	/* 背景色 */
+	background-color: #9eac92;
+	/* 縁取り（全体） */
+	border: 2px solid #001f0c;
+
+	/* リンク線の削除 */
+	text-decoration: none;
+
+	/* アニメーション */
+	transition:
+		transform 0.5s ease,
+		background-color 0.5s ease;
+}
+
+/* ホバー */
+nav ul li a:hover {
+	/* 背景色 */
+	background-color: #6b7e51;
+	/* 変形 */
+	transform: translateY(-5px);
+}
+
+/* クリック */
+nav ul li a:active {
+	/* 変形 */
+	transform: translateY(0px);
+}
+
+/* ========== タイトル ========== */
+
+/* 見出し */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/* 親要素の文字サイズを使用 */
+	font-size: clamp(12px, 1.5vw, 16px);
+
+	/* 文字サイズ */
+	font-size: 16px;
+
+	/* 太字 */
+	font-weight: bold;
+
+	/* 文字を左揃え */
+	text-align: left;
+
+	/* 内側の余白（左） */
+	padding-left: 20px;
+
+	/* 外側の余白（上下 左右） */
+	margin: 10px 0;
+
+	/* 縁取り */
+	border-bottom: 2px solid #001f0c;
+	padding-left: 10px;
+}
+
+/* サイズ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: clamp(10px, 2vw, 15px);
+}
+
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+	/* 文字 */
+	content: "■";
+
+	/* 外側の余白（右） */
+	margin-right: 10px;
+
+	/* 文字色*/
+	color: #001f0c;
+}
+
+/* ========== テキスト ========== */
+
+/* タイトル */
+.title {
+	/* 文字サイズ*/
+	font-size: clamp(9px, 2vw, 14px);
+	/* 太字 */
+	font-weight: bold;
+	/* 文字を左揃え*/
+	text-align: left;
+
+	/* 外側の余白（上 右 下 左） */
+	margin: 15px 10px;
+}
+
+/* テキスト */
+.text {
+	/* 文字サイズ*/
+	font-size: clamp(9px, 2vw, 14px);
+	/* 行間 */
+	line-height: 1.5;
+
+	/* 外側の余白（上 右 下 左） */
+	margin: 15px;
+}
+
+/* ホームテキスト */
+.h-text {
+	/* 文字サイズ*/
+	font-size: clamp(9px, 2vw, 14px);
+	/* 行間 */
+	line-height: 1.5;
+
+	/* 内側の余白（全体） */
+	padding: clamp(5px, 1.5vw, 10px);
+	/* 外側の余白（下） */
+	margin-bottom: 10px;
+
+	/* 縁取り */
+	border: 2px solid #001f0c;
+}
+
+/* ========== パンくずリスト ========== */
+
+#breadcrumb ul {
+	/* flexレイアウト有効*/
+	display: flex;
+	/* 縦方向に並べる */
+	flex-direction: column;
+
+	/* 内側の余白（上 右 下 左） */
+	padding: 0 0 0 15px;
+	/* 外側の余白（上下 左右） */
+	margin: 15px 0;
+
+	/* ・削除 */
+	list-style: none;
+
+	/* 間隔 */
+	gap: 5px;
+}
+
+#breadcrumb ul li {
+	/* 行間 */
+	line-height: 1.4;
+
+	/* 配置 */
+	position: relative;
+
+	/* 内側の余白（左） */
+	padding-left: 20px;
+}
+
+/* 共通のマーク */
+#breadcrumb ul li::before {
+	/* 文字 */
+	content: ">";
+	/* 文字色*/
+	color: #001f0c;
+
+	/* 配置 */
+	position: absolute;
+
+	/* 位置 */
+	left: 0;
+}
+
+/* 最初だけ不要なら消す */
+#breadcrumb ul li:first-child::before {
+	content: "";
+}
+
+/* ========== バナー ========== */
+
+.banner {
+	/* 横並びブロック */
+	display: inline-block;
+
+	/* リンク線の削除 */
+	text-decoration: none;
+}
+
+.banner img {
+	/* blockレイアウト有効 */
+	display: block;
+
+	/* 外側の余白（下） */
+	margin-bottom: 20px;
+
+	/* 変形 */
+	transition:
+		transform 0.5s ease,
+		filter 0.5s ease;
+
+	/* 連打時の動き防止 */
+	will-change: transform;
+}
+
+.banner img:hover {
+	/* 加工 */
+	filter: brightness(1.1);
+	/* 変形 */
+	transform: translateY(-5px);
+}
+
+.banner img:active {
+	/* 変形 */
+	transform: translateY(0px);
+}
+
+/* ========== ブログ（改善点あり） ========== */
+
+/* ブログリスト */
+.b-list {
+	/* 文字サイズ */
+	font-size: clamp(9px, 1.5vw, 14px);
+
+	/* 範囲指定 */
+	max-width: 800px;
+
+	/* 縁取り */
+	border: 2px solid #001f0c;
+}
+
+/* ブログカード */
+.b-card {
+	/* 文字色*/
+	color: inherit;
+
+	/* Flexレイアウトを有効にする */
+	display: flex;
+	/* 縦方向に並べる */
+	flex-direction: column;
+
+	/* 内側の余白（全体） */
+	padding: 5px;
+	/* 外側の余白（全体） */
+	margin: 10px;
+
+	/* 縁取り */
+	border: 1px solid #4f664e;
+
+	/* リンク線の削除 */
+	text-decoration: none;
+}
+
+/* ブログヘッダー */
+.b-header {
+	/* 太字 */
+	font-weight: bold;
+
+	/* flexレイアウト有効 */
+	display: flex;
+	/* 縦方向に中央揃え */
+	align-items: center;
+
+	/* 点線 */
+	border-bottom: 1px solid #39432b;
+}
+
+/* ブログメタ */
+.b-meta,
+.b-title,
+.b-text {
+	/* 内側の余白（上 右 下 左） */
+	padding: clamp(5px, 1.5vw, 10px);
+	/* 外側の余白（リセット） */
+	margin: 0;
+}
+
+/* ブログページ */
+.b-page {
+
+	/* flexレイアウト有効 */
+	display: flex;
+	/* 横方向の中央揃え（flex） */
+	justify-content: center;
+
+	box-sizing: border-box;
+
+	/* 外側の余白（全体） */
+	margin: 10px;
+	padding: 5px;
+
+	/* 間隔 */
+	gap: clamp(50px, 3vw, 100px);
+
+	font-size: clamp(9px, 1.5vw, 14px);
+}
+
+.b-page a {
+	/* 文字色*/
+	color: #001f0c;
+
+	/* リンク線の削除 */
+	text-decoration: none;
+}
+
+.b-page a:hover {
+	/* リンク線の削除 */
+	text-decoration: underline;
+}
+
+.b-p1 {
+	margin-right: auto;
+}
+
+.b-p2 {
+	margin: 0 auto;
+}
+
+.b-p3 {
+	margin-left: auto;
+}
+
+/* ブログリンク */
+#b-link ul {
+	/* 文字サイズ */
+	font-size: clamp(9px, 2vw, 14px);
+
+	/* flexレイアウト有効 */
+	display: flex;
+	/* 縦方向に並べる（flex） */
+	flex-direction: column;
+
+	/* 内側の余白（上 右 下 左） */
+	padding: 0 0 0 10px;
+	/* 外側の余白（上 右 下 左） */
+	margin: 15px 0;
+	/* 間隔 */
+	gap: 6px;
+
+	/* ・削除 */
+	list-style: none;
+}
+
+#b-link ul li {
+	/* 行間 */
+	line-height: 1.5;
+
+	/* 配置 */
+	position: relative;
+
+	/* 内側の余白（左） */
+	padding-left: 16px;
+}
+
+/* 共通マーク */
+#b-link ul li::before {
+	/* 文字 */
+	content: "・";
+
+	/* 配置 */
+	position: absolute;
+
+	/* 文字色*/
+	color: #001f0c;
+
+	/* 位置 */
+	left: 0;
+}
+
+/* ========== お知らせ ========== */
+
+.h-list {
+	/* 文字サイズ */
+	font-size: clamp(9px, 1.5vw, 14px);
+
+	/* 範囲指定 */
+	max-width: 800px;
+
+	/* 縁取り */
+	border: 2px solid #001f0c;
+}
+
+.h-card {
+	/* 文字色*/
+	color: inherit;
+
+	/* Flexレイアウトを有効にする */
+	display: flex;
+	/* 縦方向に並べる */
+	flex-direction: column;
+
+	/* 内側の余白（上 右 下 左） */
+	padding: 0px;
+	/* 外側の余白（上 右 下 左） */
+	margin: 10px;
+
+	/* 縁取り */
+	border: 1px solid #4f664e;
+
+	/* リンク線の削除 */
+	text-decoration: none;
+}
+
+/* タイトル＋日付の横並び */
+.h-header {
+	/* 太字 */
+	font-weight: bold;
+
+	/* flexレイアウト有効 */
+	display: flex;
+	/* 縦方向に中央揃え */
+	align-items: center;
+}
+
+.h-meta,
+.h-title {
+	/* 内側の余白（上 右 下 左） */
+	padding: clamp(5px, 1.5vw, 10px);
+	/* 外側の余白（上 右 下 左） */
+	margin: 0px;
+}
+
+/* ========== プロフィール ========== */
+
+.profile {
+	/* flexレイアウト有効 */
+	display: flex;
+	/* 縦方向に中央揃え */
+	align-items: center;
+
+	/* 内側の余白（上 右 下 左） */
+	padding: 0;
+	/* 外側の余白（上 右 下 左） */
+	margin: 15px;
+
+	/* 背景の色を変更 */
+	background-color: #9eac92;
+	/* 縁取り */
+	border: 2px solid #001f0c;
+
+	width: fit-content;
+
+	/* 変形 */
+	transition:
+		transform 0.5s ease,
+		filter 0.5s ease,
+		background-color 0.5s ease;
+}
+
+.profile img {
+	/* blockレイアウト有効 */
+	display: block;
+
+	/* 画像サイズ */
+	width: auto;
+	/* 高さ（自動） */
+	max-height: 170px;
+
+	/* 縁取り */
+	border-right: 2px solid #001f0c;
+}
+
+/* テキスト */
+.p-text {
+
+	flex: 1;
+
+	/* 文字サイズ */
+	font-size: 14px;
+	/* 太字 */
+	font-weight: bold;
+	/* 外側の余白（リセット） */
+	margin: 10px clamp(15px, 4vw, 50px);
+}
+
+/* ホバー */
+.profile:hover {
+	/* 文字色*/
+	color: #1d3f29;
+
+	/* 背景色 */
+	background-color: #6b7e51;
+
+	/* 加工 */
+	filter: brightness(1.1);
+	/* 変形 */
+	transform: translateY(-5px);
+}
+
+.profile:active {
+	/* 変形 */
+	transform: translateY(0px);
+}
+
+/* プロフィールカードのサイズ変更 */
+/* 960px以下 */
+@media screen and (max-width: 960px) {
+	.profile img {
+		width: 150px;
+	}
+
+	.p-text {
+		font-size: 13px;
+	}
+}
+
+/* 768px以下 */
+@media screen and (max-width: 768px) {
+	.profile img {
+		width: 130px;
+	}
+
+	.p-text {
+		font-size: 11px;
+	}
+}
+
+/* 570px以下 */
+@media screen and (max-width: 570px) {
+	.profile img {
+		width: 117px;
+	}
+
+	.p-text {
+		font-size: 9px;
+	}
+}
+
+/* ========== リンクボタン ========== */
+
+.link-buttons {
+	box-sizing: border-box;
+
+	/* flexレイアウト有効 */
+	display: flex;
+	/* 横方向に並べる（flex） */
+	flex-direction: row;
+
+	/* 外側の余白（全体） */
+	margin: 10px;
+
+	/* 間隔 */
+	gap: clamp(8px, 2vw, 20px);
+}
+
+/* ボタン本体 */
+.btn,
+.btn-contact {
+	flex: 0 1 110px;
+
+	/* 文字サイズ */
+	font-size: clamp(4px, 1.5vw, 12px);
+	/* 太字 */
+	font-weight: bold;
+	/* 文字色*/
+	color: #001f0c;
+	/* 文字を中央揃え */
+	text-align: center;
+
+	/* 内側の余白（上 右 下 左） */
+	padding: 5px clamp(5px, 1.5vw, 15px);
+
+
+	/* 背景色 */
+	background-color: #9eac92;
+	/* 縁取り */
+	border: 2px solid #001f0c;
+
+	/* リンク線の削除 */
+	text-decoration: none;
+
+	/* 変形 */
+	transition:
+		transform 0.5s ease,
+		background-color 0.5s ease;
+}
+
+/* ホバー */
+.btn:hover,
+.btn-contact:hover {
+	/* 背景色 */
+	background-color: #6b7e51;
+	/* 変形 */
+	transform: translateY(-5px);
+}
+
+.btn:active,
+.btn-contact:active {
+	/* 変形 */
+	transform: translateY(0px);
+}
